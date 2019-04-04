@@ -11,7 +11,7 @@ https://anapioficeandfire.com/
 
 * **Phillip Phan**
 * **Corban Cress**
-* **Trey Schmol**
+* **Trey Schmohl**
 
 
 ## License
