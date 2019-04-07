@@ -4,7 +4,7 @@ Search any GoT character and receive familial information and house allegiances!
 
 ## API Source
 
-https://anapioficeandfire.com/
+https://github.com/aiwebb/node-api-iceandfire
 
 
 ## Authors
