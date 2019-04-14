@@ -21,14 +21,58 @@ class App extends Component {
                 console.log(error);
             });
     };
+
+    houseLookup = houseLink => {
+        axios
+            .get(houseLink)
+            .then(response => {
+                console.log(response.data);
+                let swornChars = response.data.swornMembers.length;
+                console.log();
+                let x = Math.random();
+                let num = Math.round(x * swornChars);
+                let character = response.data.swornMembers[num];
+                //console.log(response.data.collection.items[3].links[0].href);
+                axios
+                    .get(character)
+                    .then(response => {
+                        console.log(response.data.name);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+
+    }
+
     render() {
-        console.log('HI');
+        
 
     return (
       <div className="App">
         <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <button onClick={() => this.doSearch()}> Add to database
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/169")}> House Greyjoy
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/229")}> House Lannister
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/362")}> House Stark
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/378")}> House Targaryen
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/398")}> House Tyrell
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/7")}> House Arryn
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/285")}> House Martell
+                </button>
+                <button onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/17")}> House Baratheon
                 </button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
