@@ -1,10 +1,9 @@
-# GoT Family Finder
+# GoT Character Matcher
 
-Search any GoT character and receive familial information and house allegiances! Based on the books.
+An app that for a given House and various other criteria, determines who you would be in the Game of Thrones world!
 
 ## API Source
-
-https://github.com/aiwebb/node-api-iceandfire
+https://www.anapioficeandfire.com/api
 
 
 ## Authors
