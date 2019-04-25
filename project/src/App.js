@@ -7,6 +7,13 @@ import { spacing } from '@material-ui/system';
 
 //Allow - Control - Allow - Origin: *
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      charName: '',
+      crest: "https://image.flaticon.com/icons/png/512/17/17200.png"
+    }
+  }
   doSearch = () => {
     let x = Math.random();
     let num = Math.round(x * 100);
@@ -40,6 +47,14 @@ class App extends Component {
           .get(character)
           .then(response => {
             console.log(response.data.name);
+            const charName = response.data.name;
+            const url = response.data.url;
+            //console.log(url[49:])
+            this.setState({
+              charName,
+              //if (url= )
+              //crest: ''
+            });
           })
           .catch(error => {
             console.log(error);
@@ -61,46 +76,51 @@ class App extends Component {
       <div className="App">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
         <header className="App-header">
-          
-        <svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-          <p>Choose your house!</p>
-          <Button variant="contained" >Add to Database</Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/169")}> House Greyjoy
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/229")}> House Lannister
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/362")}> House Stark
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/378")}> House Targaryen
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/398")}> House Tyrell
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/7")}> House Arryn
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/285")}> House Martell
-                </Button>
-          <br />
-          <Button variant="contained" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/17")}> House Baratheon
-                </Button>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
 
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <img src={this.state.crest} width="240" height="240"/>
+          <p>Choose your house!</p>
+          <p>Character: {this.state.charName}</p>
+      
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/169")}> 
+          <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/8/86/House-Greyjoy-Main-Shield.PNG/revision/latest?cb=20170523015836" height="40"></img>
+          House Greyjoy
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/229")}>
+            <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/8/8a/House-Lannister-Main-Shield.PNG/revision/latest?cb=20170101095357" height="40" />
+            House Lannister
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/362")}>
+            <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/8/8a/House-Stark-Main-Shield.PNG/revision/latest?cb=20170101103142" height="40" />
+            House Stark
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/378")}>
+            <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/4/43/House-Targaryen-Main-Shield.PNG/revision/latest?cb=20181113055101" height="40" />
+            House Targaryen
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/398")}> 
+          <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/c/cf/House-Tyrell-Main-Shield.PNG/revision/latest?cb=20170108163035" height="40"></img>
+          House Tyrell
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/7")}> 
+          <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/1/15/House-Arryn-Main-Shield.PNG/revision/latest?cb=20170101094153" height="40"/>
+          House Arryn
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/285")}> 
+          <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/7/7e/House-Martell-Main-Shield.PNG/revision/latest?cb=20170523024859" height="40"/>
+          House Martell
+                </Button>
+          <br />
+          <Button variant="contained" size="large" onClick={() => this.houseLookup("https://www.anapioficeandfire.com/api/houses/17")}> 
+          <img style={{ marginRight: 11 }} src="https://vignette.wikia.nocookie.net/gameofthrones/images/0/00/House-Baratheon-Main-Shield.PNG/revision/latest?cb=20170519002924" height="40"/>
+          House Baratheon      
+                </Button>
+          <br/>
         </header>
       </div>
     );
